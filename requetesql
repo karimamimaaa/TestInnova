@@ -1,0 +1,39 @@
+
+//la requete pour récupérer la liste de tous les produits
+query {
+  productList
+  {id,name,price,quantity,category {
+    id
+  }}
+ 
+}
+//la requete pour récupérer un produit avec son ID
+query {
+    productById(id:"a978d115-9062-440b-beb9-38e293a4a19b")
+    
+    {name,price}
+}
+//si j'ai envie d'aaficher un produit avec son Id et sa catégorie
+query {
+productById(id:"61d8a5c9-414e-4684-8511-d793d4353b25")
+{name,price,category{name}}
+
+}
+//la requete pour afficher toutes les categories
+query{
+  categories{id,name,products{id,name,price,quantity}}
+  
+  //la requete pour récupérer la catégorie avec son id 
+  query{
+  categoryById(id:3)
+  {name}
+}}
+
+//la requete pour ajouter un produit
+
+mutation{
+saveProduct(product:{name:"P12",price:4300,quantity:43,categoryId:1})
+{name,price,quantity}
+}
+
+
